@@ -22,13 +22,19 @@
             <!-- Login Form -->
             <form action="#" method="POST">
                 <div class="input-box">
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" name="email" required autocomplete="email" aria-label="Email">
                     <label for="email">Email</label>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" id="password" required>
+                    <input type="password" id="password" name="password" required autocomplete="current-password" aria-label="Password">
                     <label for="password">Password</label>
+                </div>
+
+                <!-- Forgot Password & Sign Up -->
+                <div class="forgot-signup">
+                    <a href="#">Forgot Password?</a>
+                    <a href="#">Sign Up</a>
                 </div>
 
                 <button type="submit" class="login-btn">Login</button>
@@ -37,13 +43,13 @@
             <!-- Social Login Buttons -->
             <div class="social-login">
                 <button class="google-btn">
-                    <img src="assets/google-icon.png" alt="Google"> Continue with Google
+                    <img src="assets/google-icon.png" alt="Google Logo"> Continue with Google
                 </button>
                 <button class="facebook-btn">
-                    <img src="assets/facebook-icon.png" alt="Facebook"> Continue with Facebook
+                    <img src="assets/facebook-icon.png" alt="Facebook Logo"> Continue with Facebook
                 </button>
                 <button class="apple-btn">
-                    <img src="assets/apple-icon.png" alt="Apple"> Continue with Apple
+                    <img src="assets/apple-icon.png" alt="Apple Logo"> Continue with Apple
                 </button>
             </div>
         </div>
@@ -51,4 +57,3 @@
 
 </body>
 </html>
-
