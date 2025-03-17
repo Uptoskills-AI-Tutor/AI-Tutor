@@ -3,202 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tutor - Login</title>
+    <title>AI Tutor - Forgot Password</title>
     <style>
-        /* General Page Styling */
+        /* Reset and General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #e3f2fd, #b3e5fc);
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            margin: 0;
+            width: 100vw;
+            overflow: hidden;
         }
-        /* Container Layout */
+
+        /* Container Layout - Perfect Split */
         .container {
             display: flex;
-            flex-wrap: wrap;
-            width: 900px;
-            background: #ffffff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100%;
         }
+
         /* Left Section - Image */
         .image-section {
-            flex: 1;
+            width: 50%;
+            height: 100%;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image.png-va6DS37SISE76PkyuGD1EAGPmKddmO.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Right Section - Form */
+        .form-section {
+            width: 50%;
+            height: 100%;
+            padding: 5% 4%;
+            background: linear-gradient(145deg, #f7fcff, #e6f5ff);
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            background: #f5faff;
-            padding: 20px;
+            align-items: center;
+            box-shadow: inset 5px 0 15px rgba(0, 0, 0, 0.05);
         }
-        .image-section img {
+
+        .form-container {
             width: 100%;
-            height: auto;
-            object-fit: contain;
+            max-width: 500px;
         }
-        /* Right Section - Login Form */
-        .login-section {
-            flex: 1;
-            padding: 40px;
-            background: #f7fcff;
+
+        .form-section h2 {
+            margin-bottom: 15px;
+            font-size: 36px;
+            color: #1a73e8;
             text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
         }
-        .login-section h2 {
-            margin-bottom: 10px;
-            font-size: 26px;
-            color: #222;
+
+        .form-section p {
+            color: #555;
+            margin-bottom: 35px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.5;
         }
-        .login-section p {
-            color: #666;
-            margin-bottom: 20px;
-        }
+
         /* Input Boxes */
         .input-box {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 35px;
         }
+
         .input-box input {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: none;
             border-bottom: 2px solid #2196f3;
             outline: none;
-            font-size: 16px;
+            font-size: 18px;
             background: transparent;
             color: #333;
+            transition: all 0.3s ease;
         }
+
+        .input-box input:focus {
+            border-bottom: 2px solid #ff9800;
+            box-shadow: 0 2px 5px rgba(255, 152, 0, 0.2);
+        }
+
         .input-box label {
             position: absolute;
             left: 0;
-            top: 12px;
-            font-size: 16px;
+            top: 15px;
+            font-size: 18px;
             color: #777;
             transition: 0.3s;
         }
+
         .input-box input:focus ~ label,
         .input-box input:valid ~ label {
-            top: -10px;
-            font-size: 12px;
+            top: -12px;
+            font-size: 14px;
             color: #ff9800;
+            font-weight: 600;
         }
-        /* Login Button */
-        .login-btn {
+
+        /* Button */
+        .save-btn {
             width: 100%;
-            padding: 12px;
+            padding: 16px;
             background: #ff9800;
             border: none;
             color: white;
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
         }
-        .login-btn:hover {
+
+        .save-btn:hover {
             background: #fb8c00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
         }
-        /* Forgot Password & Sign Up */
-        .forgot-signup {
+
+        /* Login Link */
+        .login-link {
+            margin-top: 30px;
+            display: block;
+            color: #2196f3;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .login-link:hover {
+            color: #0d8aee;
+            text-decoration: underline;
+        }
+
+        /* Radio Buttons for Contact Method */
+        .contact-method {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin: 15px 0;
-            font-size: 14px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-        .forgot-signup a {
-            text-decoration: none;
-            color: #6c63ff;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .forgot-signup a:hover {
-            text-decoration: underline;
-            color: #ff9800;
-        }
-        /* Social Login Buttons */
-        .social-login {
-            margin-top: 20px;
-        }
-        .social-login button {
-            width: 100%;
-            padding: 12px;
+
+        .contact-option {
             display: flex;
             align-items: center;
-            justify-content: center;
-            border: none;
+        }
+
+        .contact-option input[type="radio"] {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            accent-color: #ff9800;
+        }
+
+        .contact-option label {
             font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 8px 0;
-            transition: 0.3s;
+            color: #444;
+            font-weight: 500;
         }
-        .social-login button img {
-            width: 20px;
-            margin-right: 10px;
-        }
-        .google-btn {
-            background: #000000e7;
-            color: #ffffff;
-            border: 1px solid #ffffff;
-        }
-        .google-btn:hover {
-            background: #dcdcdc;
-        }
-        .facebook-btn {
-            background: #3b5998;
-            color: white;
-        }
-        .facebook-btn:hover {
-            background: #2d4373;
-        }
-        .apple-btn {
-            background: #000000;
-            color: rgb(255, 255, 255);
-        }
-        .apple-btn:hover {
-            background: #dcdcdc;
-        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
-                width: 90%;
             }
+            
+            .image-section, .form-section {
+                width: 100%;
+            }
+            
             .image-section {
-                display: none;
+                height: 30%;
             }
-            .login-section {
-                padding: 30px;
+            
+            .form-section {
+                height: 70%;
+                padding: 30px 20px;
+            }
+            
+            .form-section h2 {
+                font-size: 28px;
+            }
+            
+            .form-section p {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+            
+            .input-box {
+                margin-bottom: 25px;
+            }
+            
+            .input-box input {
+                font-size: 16px;
+                padding: 12px;
+            }
+            
+            .input-box label {
+                font-size: 16px;
+            }
+            
+            .save-btn {
+                font-size: 18px;
+                padding: 14px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="image-section">
-            <img src="assets/image.png" alt="AI Learning">
-        </div>
-        <div class="login-section">
-            <h2>Welcome Back!</h2>
-            <p>Log in to continue your AI learning journey.</p>
-            <form action="#" method="POST">
-                <div class="input-box">
-                    <input type="email" id="email" name="email" required>
-                    <label for="email">Email</label>
-                </div>
-                <div class="input-box">
-                    <input type="password" id="password" name="password" required>
-                    <label for="password">Password</label>
-                </div>
-                <div class="forgot-signup">
-                    <a href="Forgot.html">Forgot Password?</a>
-                    <a href="signup1.html">Sign Up</a>
-                </div>
-                <button type="submit" class="login-btn">Login</button>
-            </form>
+        <!-- Left Side - Image Section (Exactly 50%) -->
+        <div class="image-section"></div>
+
+        <!-- Right Side - Forgot Password Section (Exactly 50%) -->
+        <div class="form-section">
+            <div class="form-container">
+                <h2>Forgot Password</h2>
+                <p>Reset your password to continue your AI learning journey. We'll help you get back on track.</p>
+
+                <!-- Forgot Password Form -->
+                <form action="#" method="POST">
+                    <!-- Contact Method Selection -->
+                    <div class="contact-method">
+                        <div class="contact-option">
+                            <input type="radio" id="phone" name="contact-method" value="phone">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="contact-option">
+                            <input type="radio" id="email" name="contact-method" value="email" checked>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="contact-option">
+                            <input type="radio" id="username" name="contact-method" value="username">
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" id="contact-info" required>
+                        <label for="contact-info">Phone/Email/Username</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="password" id="new-password" required>
+                        <label for="new-password">New Password</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="password" id="confirm-password" required>
+                        <label for="confirm-password">Confirm Password</label>
+                    </div>
+
+                    <button type="submit" class="save-btn">Save</button>
+                </form>
+
+                <a href="login.html" class="login-link">Go to login page</a>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
