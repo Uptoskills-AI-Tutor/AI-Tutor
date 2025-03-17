@@ -49,7 +49,7 @@ export default function CourseList() {
       <input
         type="text"
         placeholder="Search here ..."
-        className="w-full pl-10 p-2 border-b-2 mb-4 rounded-lg shadow-sm border-gray-300 focus:outline-none focus:border-black text-black placeholder-gray-500"
+        className="w-full pl-10 p-2 border-b-2 mb-4 rounded-lg shadow-sm border-gray-300 focus:outline-none focus:border-blue text-black placeholder-gray-500"
       />
       </div>
 
@@ -65,7 +65,7 @@ export default function CourseList() {
             key={tab}
             className={`pb-2 ${
               activeTab === tab
-                ? "border-b-2 border-black text-black"
+                ? "border-b-2 border-blue text-black"
                 : "text-gray-500"
             }`}
             onClick={() => setActiveTab(tab)}
@@ -105,8 +105,8 @@ export default function CourseList() {
               </p>
             </div>
             <div className="flex items-center pr-4 mt-[-90px]">
-              <Star className="text-yellow-500 " size={16} />
-              <span className="ml-1 text-yellow-500 text-sm font-bold">{course.rating}</span>
+              <Star className="text-blue-500 " size={16} />
+              <span className="ml-1 text-blue-500 text-sm font-bold">{course.rating}</span>
             </div>
           </div>
         ))}
@@ -142,7 +142,7 @@ export default function CourseList() {
             <button
               key={day}
               className={`p-2 rounded-lg ${
-                selectedDate === day ? "bg-yellow-500 text-white font-bold" : "hover:bg-gray-200"
+                selectedDate === day ? "bg-blue-500 text-white font-bold" : "hover:bg-gray-200"
               }`}
               onClick={() => setSelectedDate(day)}
             >
