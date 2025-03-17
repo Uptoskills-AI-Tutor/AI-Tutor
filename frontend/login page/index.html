@@ -4,56 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Tutor - Login</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #b3e5fc);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Container Layout */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 900px;
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        /* Left Section - Image */
+        .image-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5faff;
+            padding: 20px;
+        }
+        .image-section img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        /* Right Section - Login Form */
+        .login-section {
+            flex: 1;
+            padding: 40px;
+            background: #f7fcff;
+            text-align: center;
+        }
+        .login-section h2 {
+            margin-bottom: 10px;
+            font-size: 26px;
+            color: #222;
+        }
+        .login-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        /* Input Boxes */
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-bottom: 2px solid #2196f3;
+            outline: none;
+            font-size: 16px;
+            background: transparent;
+            color: #333;
+        }
+        .input-box label {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            font-size: 16px;
+            color: #777;
+            transition: 0.3s;
+        }
+        .input-box input:focus ~ label,
+        .input-box input:valid ~ label {
+            top: -10px;
+            font-size: 12px;
+            color: #ff9800;
+        }
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff9800;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .login-btn:hover {
+            background: #fb8c00;
+        }
+        /* Forgot Password & Sign Up */
+        .forgot-signup {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .forgot-signup a {
+            text-decoration: none;
+            color: #6c63ff;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .forgot-signup a:hover {
+            text-decoration: underline;
+            color: #ff9800;
+        }
+        /* Social Login Buttons */
+        .social-login {
+            margin-top: 20px;
+        }
+        .social-login button {
+            width: 100%;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 8px 0;
+            transition: 0.3s;
+        }
+        .social-login button img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .google-btn {
+            background: #000000e7;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        .google-btn:hover {
+            background: #dcdcdc;
+        }
+        .facebook-btn {
+            background: #3b5998;
+            color: white;
+        }
+        .facebook-btn:hover {
+            background: #2d4373;
+        }
+        .apple-btn {
+            background: #000000;
+            color: rgb(255, 255, 255);
+        }
+        .apple-btn:hover {
+            background: #dcdcdc;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+            }
+            .image-section {
+                display: none;
+            }
+            .login-section {
+                padding: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Left Side - Image Section -->
         <div class="image-section">
             <img src="assets/image.png" alt="AI Learning">
         </div>
-
-        <!-- Right Side - Login Section -->
         <div class="login-section">
             <h2>Welcome Back!</h2>
             <p>Log in to continue your AI learning journey.</p>
-
-            <!-- Login Form -->
             <form action="#" method="POST">
                 <div class="input-box">
-                    <input type="email" id="email" name="email" required autocomplete="email" aria-label="Email">
+                    <input type="email" id="email" name="email" required>
                     <label for="email">Email</label>
                 </div>
-
                 <div class="input-box">
-                    <input type="password" id="password" name="password" required autocomplete="current-password" aria-label="Password">
+                    <input type="password" id="password" name="password" required>
                     <label for="password">Password</label>
                 </div>
-
-                <!-- Forgot Password & Sign Up -->
                 <div class="forgot-signup">
-                    <a href="#">Forgot Password?</a>
-                    <a href="#">Sign Up</a>
+                    <a href="forgot.html">Forgot Password?</a>
+                    <a href="signup1.html">Sign Up</a>
                 </div>
-
                 <button type="submit" class="login-btn">Login</button>
             </form>
-
-            <!-- Social Login Buttons -->
-            <div class="social-login">
-                <button class="google-btn">
-                    <img src="assets/google-icon.png" alt="Google Logo"> Continue with Google
-                </button>
-                <button class="facebook-btn">
-                    <img src="assets/facebook-icon.png" alt="Facebook Logo"> Continue with Facebook
-                </button>
-                <button class="apple-btn">
-                    <img src="assets/apple-icon.png" alt="Apple Logo"> Continue with Apple
-                </button>
-            </div>
         </div>
     </div>
-
 </body>
 </html>
