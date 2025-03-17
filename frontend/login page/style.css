@@ -13,6 +13,7 @@ body {
 /* Container Layout */
 .container {
     display: flex;
+    flex-wrap: wrap; /* Responsive behavior */
     width: 900px;
     background: #ffffff; /* White background */
     border-radius: 15px;
@@ -105,6 +106,27 @@ body {
     background: #fb8c00; /* Slightly darker orange */
 }
 
+/* Forgot Password & Sign Up */
+.forgot-signup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.forgot-signup a {
+    text-decoration: none;
+    color: #6c63ff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.forgot-signup a:hover {
+    text-decoration: underline;
+    color: #ff9800;
+}
+
 /* Social Login Buttons */
 .social-login {
     margin-top: 20px;
@@ -112,7 +134,7 @@ body {
 
 .social-login button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -158,4 +180,20 @@ body {
 
 .apple-btn:hover {
     background: #dcdcdc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .image-section {
+        display: none; /* Hide image section on smaller screens */
+    }
+
+    .login-section {
+        padding: 30px;
+    }
 }
