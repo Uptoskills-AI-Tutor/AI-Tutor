@@ -1,0 +1,8 @@
+streamlit
+google-generativeai
+python-dotenv
+IPython
+cohere
+requests
+joblib
+pytesseract 
