@@ -203,7 +203,7 @@ export default function Dashboard() {
                           </div>
                           <span className="text-sm font-medium text-sky-600">{course.progress}%</span>
                         </div>
-                        <Progress value={course.progress} className="h-2 bg-sky-100" indicatorClassName="bg-sky-500" />
+                        <Progress value={course.progress} className="h-2 bg-sky-100" />
                       </div>
                     ))}
                   </div>

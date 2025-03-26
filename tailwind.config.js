@@ -64,6 +64,12 @@ module.exports = {
           900: "#0c4a6e",
           950: "#082f49",
         },
+        // Add your custom color here
+        customColor: {
+          light: "#D1E8E2",
+          DEFAULT: "#FC7a02",
+          dark: "#065F46",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
