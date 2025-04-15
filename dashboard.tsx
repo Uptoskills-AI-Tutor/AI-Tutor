@@ -1,9 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Calendar } from "@/components/ui/calendar"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
+import { useState } from "react";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import {
   BarChart3,
   BookOpen,
@@ -16,7 +22,7 @@ import {
   MessageSquare,
   Settings,
   User,
-} from "lucide-react"
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,40 +30,85 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { useIsMobile } from "@/hooks/use-mobile"
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { useIsMobile } from "@/hooks/use-mobile";
+import Quiz from "@/components/ui/quiz";
+import { PaginationNav } from "@/components/ui/pagination";
+
+const recentActivities = [
+  { id: 1, type: "quiz", name: "JavaScript Basics Quiz", score: "85%", date: "Today, 9:30 AM" },
+  { id: 2, type: "lesson", name: "React Hooks Deep Dive", progress: "Completed", date: "Yesterday, 4:15 PM" },
+  { id: 3, type: "assignment", name: "CSS Grid Assignment", status: "Pending", date: "Mar 15, 11:20 AM" },
+  { id: 4, type: "forum", name: "UI/UX Design Discussion", replies: 5, date: "Mar 14, 2:45 PM" },
+  { id: 5, type: "quiz", name: "TypeScript Essentials Quiz", score: "88%", date: "Mar 13, 10:00 AM" },
+  { id: 6, type: "lesson", name: "Node.js Basics", progress: "In Progress", date: "Mar 12, 3:00 PM" },
+];
 
 export default function Dashboard() {
-  const [date, setDate] = useState<Date | undefined>(new Date())
-  const isMobile = useIsMobile()
-  const [sidebarOpen, setSidebarOpen] = useState(!isMobile)
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  const isMobile = useIsMobile();
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Sample data
   const courses = [
-    { id: 1, name: "Introduction to React", progress: 75, totalLessons: 12, completedLessons: 9 },
-    { id: 2, name: "Advanced JavaScript", progress: 45, totalLessons: 10, completedLessons: 4 },
-    { id: 3, name: "UI/UX Design Principles", progress: 20, totalLessons: 8, completedLessons: 1 },
-  ]
+    {
+      id: 1,
+      name: "Introduction to React",
+      progress: 75,
+      totalLessons: 12,
+      completedLessons: 9,
+    },
+    {
+      id: 2,
+      name: "Advanced JavaScript",
+      progress: 45,
+      totalLessons: 10,
+      completedLessons: 4,
+    },
+    {
+      id: 3,
+      name: "UI/UX Design Principles",
+      progress: 20,
+      totalLessons: 8,
+      completedLessons: 1,
+    },
+  ];
 
   const upcomingCourses = [
-    { id: 1, name: "Data Structures & Algorithms", date: "Tomorrow, 10:00 AM", duration: "1h 30m" },
-    { id: 2, name: "Web Security Fundamentals", date: "Mar 20, 2:00 PM", duration: "1h" },
-    { id: 3, name: "Responsive Design Workshop", date: "Mar 22, 11:00 AM", duration: "2h" },
-  ]
-
-  const recentActivities = [
-    { id: 1, type: "quiz", name: "JavaScript Basics Quiz", score: "85%", date: "Today, 9:30 AM" },
-    { id: 2, type: "lesson", name: "React Hooks Deep Dive", progress: "Completed", date: "Yesterday, 4:15 PM" },
-    { id: 3, type: "assignment", name: "Build a Todo App", status: "Submitted", date: "Mar 15, 11:20 AM" },
-    { id: 4, type: "forum", name: "Asked: How to optimize React renders?", replies: 3, date: "Mar 14, 2:45 PM" },
-  ]
+    {
+      id: 1,
+      name: "Data Structures & Algorithms",
+      date: "Tomorrow, 10:00 AM",
+      duration: "1h 30m",
+    },
+    {
+      id: 2,
+      name: "Web Security Fundamentals",
+      date: "Mar 20, 2:00 PM",
+      duration: "1h",
+    },
+    {
+      id: 3,
+      name: "Responsive Design Workshop",
+      date: "Mar 22, 11:00 AM",
+      duration: "2h",
+    },
+  ];
 
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen)
-  }
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(courses.length / itemsPerPage);
+  const paginatedCourses = courses.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <div className="flex min-h-screen bg-slate-50">
@@ -147,9 +198,15 @@ export default function Dashboard() {
             <div className="flex items-center">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Button
+                    variant="ghost"
+                    className="relative h-8 w-8 rounded-full"
+                  >
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src="/placeholder.svg?height=32&width=32" alt="@user" />
+                      <AvatarImage
+                        src="/placeholder.svg?height=32&width=32"
+                        alt="@user"
+                      />
                       <AvatarFallback>US</AvatarFallback>
                     </Avatar>
                   </Button>
@@ -178,13 +235,17 @@ export default function Dashboard() {
         {/* Dashboard Content */}
         <main className="flex-1 overflow-y-auto bg-slate-50 p-4">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-800">Welcome back, Student!</h1>
-            <p className="text-gray-600">Here's an overview of your learning progress</p>
+            <h1 className="text-2xl font-bold text-gray-800">
+              Welcome back, Student!
+            </h1>
+            <p className="text-gray-600">
+              Here's an overview of your learning progress
+            </p>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {/* Course Progress */}
-            <div className="md:col-span-2">
+            <div>
               <Card>
                 <CardHeader>
                   <CardTitle>Course Progress</CardTitle>
@@ -192,23 +253,42 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    {courses.map((course) => (
+                    {paginatedCourses.map((course) => (
                       <div key={course.id} className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <h3 className="font-medium">{course.name}</h3>
                             <p className="text-sm text-gray-500">
-                              {course.completedLessons} of {course.totalLessons} lessons completed
+                              {course.completedLessons} of {course.totalLessons}{" "}
+                              lessons completed
                             </p>
                           </div>
-                          <span className="text-sm font-medium text-sky-600">{course.progress}%</span>
+                          <span className="text-sm font-medium text-sky-600">
+                            {course.progress}%
+                          </span>
                         </div>
-                        <Progress value={course.progress} className="h-2 bg-sky-100" />
+                        <Progress
+                          value={course.progress}
+                          className="h-2 bg-sky-100"
+                        />
                       </div>
                     ))}
                   </div>
+                  {/* PaginationNav with proper alignment */}
+                  <div className="flex justify-center mt-4">
+                    <PaginationNav
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={(page: number) => setCurrentPage(page)}
+                    />
+                  </div>
                 </CardContent>
               </Card>
+            </div>
+
+            {/* Quiz Component */}
+            <div>
+              <Quiz />
             </div>
 
             {/* Calendar */}
@@ -219,11 +299,18 @@ export default function Dashboard() {
                   <CardDescription>Your schedule</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Calendar mode="single" selected={date} onSelect={setDate} className="rounded-md border" />
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    className="rounded-md border"
+                  />
                 </CardContent>
               </Card>
             </div>
+          </div>
 
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {/* Upcoming Courses */}
             <div>
               <Card>
@@ -233,22 +320,38 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {upcomingCourses.map((course) => (
-                      <div key={course.id} className="flex items-start space-x-3 rounded-lg border p-3 shadow-sm">
-                        <div className="rounded-full bg-sky-100 p-2 text-sky-600">
-                          <Clock className="h-5 w-5" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-medium">{course.name}</h3>
-                          <div className="mt-1 flex items-center text-sm text-gray-500">
-                            <CalendarIcon className="mr-1 h-3 w-3" />
-                            <span>{course.date}</span>
-                            <span className="mx-1">•</span>
-                            <span>{course.duration}</span>
+                    {upcomingCourses
+                      .slice(
+                        (currentPage - 1) * itemsPerPage,
+                        currentPage * itemsPerPage
+                      )
+                      .map((course) => (
+                        <div
+                          key={course.id}
+                          className="flex items-start space-x-3 rounded-lg border p-3 shadow-sm"
+                        >
+                          <div className="rounded-full bg-sky-100 p-2 text-sky-600">
+                            <Clock className="h-5 w-5" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-medium">{course.name}</h3>
+                            <div className="mt-1 flex items-center text-sm text-gray-500">
+                              <CalendarIcon className="mr-1 h-3 w-3" />
+                              <span>{course.date}</span>
+                              <span className="mx-1">•</span>
+                              <span>{course.duration}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
+                  {/* PaginationNav */}
+                  <div className="flex justify-center mt-4">
+                    <PaginationNav
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={(page: number) => setCurrentPage(page)}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -259,39 +362,62 @@ export default function Dashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Recent Activities</CardTitle>
-                  <CardDescription>Your latest learning activities</CardDescription>
+                  <CardDescription>
+                    Your latest learning activities
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {recentActivities.map((activity) => (
-                      <div key={activity.id} className="flex items-start space-x-3 rounded-lg border p-3 shadow-sm">
+                    {recentActivities.slice(
+                      (currentPage - 1) * itemsPerPage,
+                      currentPage * itemsPerPage
+                    ).map((activity) => (
+                      <div
+                        key={activity.id}
+                        className="flex items-start space-x-3 rounded-lg border p-3 shadow-sm"
+                      >
                         <div className="rounded-full bg-sky-100 p-2 text-sky-600">
-                          {activity.type === "quiz" && <BarChart3 className="h-5 w-5" />}
-                          {activity.type === "lesson" && <BookOpen className="h-5 w-5" />}
-                          {activity.type === "assignment" && <GraduationCap className="h-5 w-5" />}
-                          {activity.type === "forum" && <MessageSquare className="h-5 w-5" />}
+                          {activity.type === "quiz" && <span className="font-bold text-lg">Q</span>}
+                          {activity.type === "lesson" && <span className="font-bold text-lg">L</span>}
+                          {activity.type === "assignment" && <span className="font-bold text-lg">A</span>}
+                          {activity.type === "forum" && <span className="font-bold text-lg">F</span>}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
                             <h3 className="font-medium">{activity.name}</h3>
-                            <Badge variant="outline" className="bg-sky-50 text-sky-700 hover:bg-sky-100">
-                              {activity.type}
-                            </Badge>
-                          </div>
-                          <div className="mt-1 flex items-center justify-between text-sm">
-                            <div className="text-gray-500">{activity.date}</div>
                             {activity.score && (
-                              <div className="font-medium text-green-600">Score: {activity.score}</div>
+                              <Badge variant="outline" className="bg-green-50 text-green-700 hover:bg-green-100">
+                                {activity.score}
+                              </Badge>
                             )}
-                            {activity.progress && <div className="font-medium text-sky-600">{activity.progress}</div>}
-                            {activity.status && <div className="font-medium text-amber-600">{activity.status}</div>}
+                            {activity.progress && (
+                              <Badge variant="outline" className="bg-blue-50 text-blue-700 hover:bg-blue-100">
+                                {activity.progress}
+                              </Badge>
+                            )}
+                            {activity.status && (
+                              <Badge variant="outline" className="bg-yellow-50 text-yellow-700 hover:bg-yellow-100">
+                                {activity.status}
+                              </Badge>
+                            )}
                             {activity.replies !== undefined && (
-                              <div className="font-medium text-gray-600">{activity.replies} replies</div>
+                              <Badge variant="outline" className="bg-gray-50 text-gray-700 hover:bg-gray-100">
+                                {activity.replies} replies
+                              </Badge>
                             )}
                           </div>
+                          <div className="mt-1 text-sm text-gray-500">{activity.date}</div>
                         </div>
                       </div>
                     ))}
+                  </div>
+                  {/* PaginationNav */}
+                  <div className="flex justify-center mt-4">
+                    <PaginationNav
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      onPageChange={(page: number) => setCurrentPage(page)}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -300,6 +426,5 @@ export default function Dashboard() {
         </main>
       </div>
     </div>
-  )
+  );
 }
-
