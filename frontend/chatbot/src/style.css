@@ -1,0 +1,134 @@
+/* General */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e6f0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .chat-container {
+    background: white;
+    width: 400px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  
+  /* Header */
+  .chat-header {
+    background-color: #007BFF;
+    color: white;
+    padding: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  #clear-chat {
+    background: #ff9800;
+    border: none;
+    padding: 8px 14px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  /* Chat box */
+  .chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f4f9ff;
+  }
+  
+  /* Chat Bubbles */
+  .message {
+    display: flex;
+    margin: 10px 0;
+    align-items: flex-end;
+  }
+  
+  .bot {
+    justify-content: flex-start;
+  }
+  
+  .user {
+    justify-content: flex-end;
+  }
+  
+  .bubble {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+  }
+  
+  .bot .bubble {
+    background: #b3e5fc;
+    color: white;
+    border-bottom-left-radius: 0;
+  }
+  
+  .user .bubble {
+    background: #ff9800;
+    color: white;
+    border-bottom-right-radius: 0;
+  }
+  
+  /* Avatar */
+  .avatar {
+    width: 32px;
+    height: 32px;
+    margin: 0 8px;
+    border-radius: 50%;
+  }
+  
+  .bot .avatar {
+    background: url('https://cdn-icons-png.flaticon.com/512/4712/4712035.png') center/cover;
+  }
+  
+  .user .avatar {
+    background: url('https://cdn-icons-png.flaticon.com/512/4712/4712040.png') center/cover;
+  }
+  
+  /* Timestamp */
+  .timestamp {
+    font-size: 10px;
+    margin-top: 4px;
+    color: gray;
+  }
+  
+  /* Input Area */
+  .input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background: #f9fbff;
+  }
+  
+  #user-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px 0 0 20px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  #send-btn {
+    background-color: #ff9800;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+  }
+  
