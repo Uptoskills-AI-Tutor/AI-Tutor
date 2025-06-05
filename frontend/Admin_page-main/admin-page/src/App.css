@@ -1,0 +1,383 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: 'Gill Sans', sans-serif; */
+}
+
+body{
+  background-color: whitesmoke;
+}
+
+.admin_header{
+  height: 80px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main_heading{
+  padding-left: 50px;
+}
+
+.profile_name{
+  padding-right: 50px;
+}
+
+.main_heading h1{
+  color: rgb(98, 64, 184);
+}
+
+.main_heading p{
+  color: black;
+  font-weight: 500;
+  font-size: small;
+}
+
+.profile_name h2{
+  font-size: smaller;
+  font-weight: 600;
+}
+
+.profile_name p{
+  font-size: small;
+}
+
+.dashboard_overview{
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard_overview h1{
+  color: rgb(104, 4, 198);
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.dashboard_overview p{
+  width: 500px;
+  text-align: center;
+}
+
+
+.cards_container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card{
+  height: 150px;
+  width: 250px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 20px;
+}
+
+.card .left-content p{
+  font-weight: bold;
+  color: black;
+}
+
+.increase_percent{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.increase{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 252, 59, 0.137);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.student{
+  width: 200px;
+  height: 10px;
+}
+
+.top_progress{
+  display: flex;
+}
+
+.top_performer{
+  margin-top: 50px;
+  margin-left: 65px;
+  width: 40%;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  min-height: 600px;
+}
+
+.progress_tracker{
+  margin-top: 50px;
+  margin-left: 65px;
+  width: 40%;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  min-height: 400px;
+}
+
+.top_performer_heading{
+  height: 100px;
+  background: linear-gradient(to right, #6e1896, #16839b);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.top_performer_subheading .blue{
+  background-color: blue;
+}
+
+.progress_tracker_heading{
+  height: 100px;
+  background-color: #105c0be1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.progress_tracker_subheading{
+  height: 150px;
+  background-color: rgb(235, 255, 204);
+  width: 90%;
+  margin-left: 27px;
+  margin-top: 50px;
+  border-radius: 10px;
+  border: 2px solid green;
+}
+
+.progress_tracker_content,.progress_update{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.performer_right_subcontent{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress_left_update{
+  display: flex;
+  gap: 20px;
+}
+
+.top_performer_subheading{
+  height: 100px;
+  background-color: rgba(245, 245, 220, 0.441);
+  margin-top: 50px;
+  width: 85%;
+  margin-left: 40px;
+  border-radius: 10px;
+  border: 2px solid rgb(255, 255, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.progress_tracker{
+  width: 40%;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.recent-activity {
+  flex: 2;
+  color: white;
+  border-radius: 12px;
+  background-color: white;
+  /* height: 350px; */
+}
+
+.recent-activity .header {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #b721ff, #21d4fd);
+  margin-bottom: 20px;
+  height: 100px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+}
+
+.recent-activity .header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.recent-activity .header p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.view-btn {
+  background-color: #ffffff55;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.activity-card {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  align-items: center;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.activity-card.green {
+  background-color: #e7fff1;
+  border: 1px solid #38b000;
+}
+
+.activity-card.blue {
+  background-color: #e7f0ff;
+  border: 1px solid #1e90ff;
+}
+
+.activity-card.yellow {
+  background-color: #fffbe7;
+  border: 1px solid #f9a825;
+}
+
+.activity-card.red {
+  background-color: #8514141d;
+  border: 1px solid #df0a0a;
+}
+
+.activity-card h3 {
+  margin: 0;
+  color: #000;
+}
+
+.activity-card p {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.time {
+  font-size: 12px;
+  color: #666;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.quick-actions {
+  /* flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white; */
+
+  margin-top: -40px;
+}
+
+.quick-actions .header {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  padding: 16px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 100px;
+
+}
+
+.quick-actions .header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.quick-actions .header p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.quick-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #fff;
+  padding: 15px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 12px;
+  height: 120px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.quick-icon {
+  font-size: 28px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #eaeaea;
+}
+
+.quick-icon.blue {
+  color: #1e90ff;
+}
+
+.quick-icon.green {
+  color: #38b000;
+}
+
+.quick-icon.orange {
+  color: #ff8800;
+}
+
+.quick-card.blue{
+  background-color: #1e8fff25;
+  border: 1px solid blue;
+}
+
+.quick-card.green{
+  background-color: #38b00012;
+  border: 1px solid green;
+}
+
+.quick-card.orange{
+  background-color: #ff880020;
+  border: 1px solid orange;
+}

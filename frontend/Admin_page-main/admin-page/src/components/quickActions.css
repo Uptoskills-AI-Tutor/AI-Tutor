@@ -1,0 +1,19 @@
+.myHeader{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.form-handling{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.notifications{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
