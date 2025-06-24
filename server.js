@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
+const studentRoutes = require('./routes/studentRoutes'); // ✅ Add this line
 
 const app = express();
 
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api', studentRoutes); // ✅ Mount student data routes here
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
