@@ -50,4 +50,34 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// ADMIN REGISTER
+router.post("/admin/register", async (req, res) => {
+  const { name, email, password } = req.body;
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const admin = new Admin({ name, email, password: hashedPassword });
+    await admin.save();
+    res.status(201).json({ message: "Admin registered" });
+  } catch (err) {
+    res.status(500).json({ error: "Error registering admin" });
+  }
+});
+
+// ADMIN LOGIN
+router.post("/admin/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const admin = await Admin.findOne({ email });
+    if (!admin) return res.status(401).json({ error: "Invalid credentials" });
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if (!isMatch) return res.status(401).json({ error: "Invalid credentials" });
+
+    const token = jwt.sign({ id: admin._id }, "secretKey", { expiresIn: "1d" });
+    res.json({ token, admin });
+  } catch (err) {
+    res.status(500).json({ error: "Login failed" });
+  }
+});
+
 module.exports = router;
