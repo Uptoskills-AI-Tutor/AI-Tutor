@@ -1,12 +1,16 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const passport = require("passport");
 const User = require("../models/User");
+const Admin = require("../models/Admin");
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || "mySuperSecretKey123!@#";
 
-// Signup
+// ------------------------
+// 🔒 JWT User Signup Route
+// ------------------------
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -14,7 +18,7 @@ router.post("/signup", async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ message: "User already exists" });
 
-    const newUser = new User({ name, email, password }); // password hashed in model
+    const newUser = new User({ name, email, password }); // Password hashed in model
     await newUser.save();
 
     res.status(201).json({ message: "User created successfully" });
@@ -23,7 +27,9 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// Login
+// ----------------------
+// 🔒 JWT User Login Route
+// ----------------------
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -50,7 +56,9 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// ADMIN REGISTER
+// -------------------------
+// 🔒 Admin Register (JWT)
+// -------------------------
 router.post("/admin/register", async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -63,7 +71,9 @@ router.post("/admin/register", async (req, res) => {
   }
 });
 
-// ADMIN LOGIN
+// ----------------------
+// 🔒 Admin Login (JWT)
+// ----------------------
 router.post("/admin/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -79,5 +89,40 @@ router.post("/admin/login", async (req, res) => {
     res.status(500).json({ error: "Login failed" });
   }
 });
+
+// =========================
+// ✅ GitHub OAuth Routes
+// =========================
+
+// 🔁 Start GitHub login flow
+router.get("/github", passport.authenticate("github", { scope: ["user:email"] }));
+
+// 🔄 GitHub callback
+router.get(
+  "/github/callback",
+  passport.authenticate("github", { failureRedirect: "/" }),
+  (req, res) => {
+    res.redirect("http://localhost:5173/dashboard"); // 🔁 Redirect after successful login
+  }
+);
+
+// =========================
+// ✅ Google OAuth Routes
+// =========================
+
+// 🔁 Start Google login flow
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+// 🔄 Google callback
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/" }),
+  (req, res) => {
+    res.redirect("http://localhost:5173/dashboard"); // 🔁 Redirect after successful login
+  }
+);
 
 module.exports = router;

@@ -5,9 +5,19 @@ import Image from "next/image"
 import { Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { coursesData } from "@/lib/course-data"
+import EnrollmentForm from "@/components/enrollment-form"
 
 export default function CourseHero() {
   const [currentCourse, setCurrentCourse] = useState(coursesData[0])
+  const [showEnrollmentForm, setShowEnrollmentForm] = useState(false)
+
+  const toggleEnrollmentForm = () => {
+    setShowEnrollmentForm(!showEnrollmentForm)
+  }
+
+  if (showEnrollmentForm) {
+    return <EnrollmentForm />
+  }
 
   return (
     <div className="grid gap-8 md:grid-cols-2 md:items-center mb-12">
@@ -59,7 +69,13 @@ export default function CourseHero() {
         </div>
 
         <div className="flex flex-wrap gap-4">
-          <Button className="bg-orange-500 hover:bg-orange-600">Enroll Now</Button>
+          <Button 
+            className="bg-orange-500 hover:bg-orange-600 focus:ring-2 focus:ring-orange-300 focus:ring-offset-2"
+            onClick={toggleEnrollmentForm}
+            aria-label="Enroll in course"
+          >
+            Enroll Now
+          </Button>
           <Button variant="outline" className="border-orange-500 text-orange-500 hover:bg-orange-50">
             See Curriculum
           </Button>
