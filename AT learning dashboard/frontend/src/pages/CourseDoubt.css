@@ -1,0 +1,116 @@
+/* course-doubt.css */
+
+.cosmic-container {
+  display: flex;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e1e1e;
+}
+
+.star-nav {
+  background-color: #005bff;
+  color: white;
+  width: 260px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.cosmic-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.supernova-btn {
+  background-color: white;
+  color: #005bff;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.cosmic-tab {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #0047cc;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.cosmic-tab.active {
+  background-color: white;
+  color: #005bff;
+  font-weight: 600;
+}
+
+.star-system {
+  margin-top: 20px;
+}
+
+.star-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #0047cc;
+  color: white;
+  cursor: pointer;
+}
+
+.star-item.active {
+  background-color: #ffffff;
+  color: #005bff;
+}
+
+.cosmic-viewer {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 30px;
+}
+
+.nebula-video {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.timeline {
+  height: 8px;
+  background: #ddd;
+  border-radius: 10px;
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background: #005bff;
+  border-radius: 10px;
+}
+
+.cosmic-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.feedback-form input, .feedback-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.feedback-form button {
+  background-color: #005bff;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
