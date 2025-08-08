@@ -1,0 +1,255 @@
+/* General container setup */
+.cosmic-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0b0c10;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Light Mode Theme */
+.light-mode {
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+.star-nav {
+  width: 320px;
+  padding: 20px;
+  border-right: 2px solid #333;
+  background-color: #121212;
+}
+
+.light-mode .star-nav {
+  background-color: #ffffff;
+  border-color: #ddd;
+}
+
+/* Header */
+.cosmic-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cosmic-header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.mode-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  float: right;
+  cursor: pointer;
+}
+
+/* Phase Button */
+.current-star h2 {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+.supernova-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ff9800;
+  color: white;
+  padding: 8px 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.supernova-btn:hover {
+  background: #e68900;
+}
+
+/* Tabs */
+.cosmic-tabs {
+  margin-top: 30px;
+}
+
+.cosmic-tab {
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.cosmic-tab:hover {
+  background-color: #1c1c1c;
+}
+
+.active {
+  background-color: #ff9800;
+  color: #000;
+}
+
+/* Star Items (left list) */
+.star-system {
+  margin-top: 20px;
+}
+
+.star-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.star-item:hover {
+  background-color: #222;
+}
+
+.star-item.active {
+  background-color: #333;
+  font-weight: bold;
+}
+
+.star-icon {
+  font-size: 20px;
+}
+
+/* Viewer Section */
+.cosmic-viewer {
+  flex: 1;
+  padding: 30px;
+  background: #1a1a1a;
+}
+
+.light-mode .cosmic-viewer {
+  background: #f0f0f0;
+}
+
+/* Display Section */
+.stellar-display {
+  margin-bottom: 30px;
+  background: #2b2b2b;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.light-mode .stellar-display {
+  background: #ffffff;
+}
+
+.video-space {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.video-space h2 {
+  font-size: 1.4rem;
+  margin-top: 10px;
+}
+
+/* Controls */
+.cosmic-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.timeline {
+  height: 6px;
+  background: #444;
+  flex-grow: 1;
+  position: relative;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.progress {
+  background: #ff9800;
+  height: 100%;
+  border-radius: 3px;
+}
+
+/* Content Area */
+.stellar-content {
+  padding: 15px;
+}
+
+.content-section {
+  margin-bottom: 20px;
+}
+
+.content-section h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #ff9800;
+}
+
+.cosmic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.cosmic-card {
+  background: #333;
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.cosmic-card:hover {
+  transform: translateY(-5px);
+}
+
+.cosmic-card h4 {
+  margin-bottom: 5px;
+}
+
+/* Feedback Form */
+.cosmic-feedback h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ff9800;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #fff;
+  color: #000;
+}
+
+.feedback-form textarea {
+  resize: none;
+}
+
+.feedback-form button {
+  align-self: flex-start;
+}

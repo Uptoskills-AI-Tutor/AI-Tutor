@@ -18,6 +18,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
+<<<<<<< HEAD
       const res = await fetch("http://localhost:5000/api/auth/login", {
 
         method: "POST",
@@ -25,13 +26,25 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+=======
+      const res = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+>>>>>>> 483fb3c7969c56b545a1a151b9f35d9e46855ae5
       });
 
       const data = await res.json();
 
       if (res.ok) {
         setMessage("Login successful!");
+<<<<<<< HEAD
         // You can store token in localStorage and redirect if needed
+=======
+        // Redirect or store token if using authentication
+>>>>>>> 483fb3c7969c56b545a1a151b9f35d9e46855ae5
       } else {
         setMessage(data.message || "Login failed.");
       }
@@ -75,7 +88,11 @@ const Login = () => {
             />
           </div>
           <div className="forgot-signup">
+<<<<<<< HEAD
             <Link to="/forgot-password">Forgot Password?</Link>
+=======
+            <Link to="/forgot">Forgot Password?</Link>
+>>>>>>> 483fb3c7969c56b545a1a151b9f35d9e46855ae5
             <Link to="/signup">Sign Up</Link>
           </div>
           <button type="submit" className="login-btn">Login</button>

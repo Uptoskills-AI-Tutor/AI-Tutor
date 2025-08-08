@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* CosmicClassroom.css */
 
 :root {
@@ -652,3 +653,659 @@ body.light-mode .feedback-form textarea:focus {
     order: 2;
   }
 }
+=======
+/* CosmicClassroom.css */
+
+:root {
+  /* Dark Mode Colors */
+  --cosmic-blue: #0b3d91;
+  --star-orange: #fc3d21;
+  --nebula-purple: #6a4c93;
+  --space-black: #121212;
+  --starlight: #e0e0e0;
+  --galaxy-gradient: linear-gradient(
+    135deg,
+    var(--cosmic-blue),
+    var(--space-black)
+  );
+
+  /* Light Mode Colors */
+  --cosmic-blue-light: #1a73e8;
+  --star-orange-light: #e64a19;
+  --nebula-purple-light: #7e57c2;
+  --space-white: #f5f5f5;
+  --space-text: #333333;
+  --galaxy-gradient-light: linear-gradient(
+    135deg,
+    var(--cosmic-blue-light),
+    var(--space-white)
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron", "Roboto", sans-serif;
+}
+
+body {
+  background-color: var(--space-black);
+  color: var(--starlight);
+  min-height: 100vh;
+  padding: 20px;
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(251, 140, 0, 0.1) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(11, 61, 145, 0.1) 0%,
+      transparent 20%
+    );
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+  background-color: var(--space-white);
+  color: var(--space-text);
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgba(251, 140, 0, 0.05) 0%,
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(11, 61, 145, 0.05) 0%,
+      transparent 20%
+    );
+}
+
+.light-mode .star-nav,
+.light-mode .stellar-display {
+  background: rgba(245, 245, 245, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--space-text);
+}
+
+.light-mode .cosmic-header {
+  background: var(--galaxy-gradient-light);
+  color: var(--space-text);
+}
+
+.light-mode .cosmic-header h1 {
+  background: linear-gradient(to right, #333 0%, var(--star-orange-light) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-mode .current-star {
+  background: rgba(230, 74, 25, 0.1);
+}
+
+.light-mode .supernova-btn {
+  background: var(--star-orange-light);
+  box-shadow: 0 2px 10px rgba(230, 74, 25, 0.4);
+}
+
+.light-mode .supernova-btn:hover {
+  box-shadow: 0 4px 15px rgba(230, 74, 25, 0.6);
+}
+
+.light-mode .cosmic-tabs {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .cosmic-tab.active {
+  color: var(--star-orange-light);
+  border-bottom: 3px solid var(--star-orange-light);
+}
+
+.light-mode .cosmic-tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .star-item:hover {
+  background: rgba(26, 115, 232, 0.1);
+}
+
+.light-mode .star-item.active {
+  background: rgba(230, 74, 25, 0.1);
+  border-left: 3px solid var(--star-orange-light);
+}
+
+.light-mode .star-icon {
+  color: var(--star-orange-light);
+}
+
+.light-mode .video-space {
+  background: radial-gradient(
+    ellipse at center,
+    var(--cosmic-blue-light) 0%,
+    var(--space-white) 100%
+  );
+  color: var(--space-text);
+}
+
+.light-mode .video-space i {
+  color: var(--star-orange-light);
+}
+
+.light-mode .cosmic-controls {
+  background: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .control-btn {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--space-text);
+}
+
+.light-mode .control-btn:hover {
+  background: rgba(230, 74, 25, 0.2);
+  color: var(--star-orange-light);
+}
+
+.light-mode .control-btn.active {
+  background: var(--star-orange-light);
+  color: white;
+}
+
+.light-mode .timeline {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .progress {
+  background: var(--star-orange-light);
+}
+
+.light-mode .progress::after {
+  background: var(--star-orange-light);
+}
+
+.light-mode .content-section h3 {
+  color: var(--star-orange-light);
+}
+
+.light-mode .cosmic-card {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .cosmic-card:hover {
+  background: rgba(230, 74, 25, 0.1);
+  border-color: rgba(230, 74, 25, 0.3);
+}
+
+.light-mode .cosmic-card h4 {
+  color: var(--star-orange-light);
+}
+
+.cosmic-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 20px;
+  height: calc(100vh - 40px);
+}
+
+/* Stellar Navigation */
+.star-nav {
+  background: rgba(18, 18, 18, 0.8);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.cosmic-header {
+  background: var(--galaxy-gradient);
+  padding: 20px;
+  border-bottom: 2px solid var(--star-orange);
+  text-align: center;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.cosmic-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  background: linear-gradient(to right, #fff 0%, var(--star-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cosmic-header p {
+  font-size: 14px;
+  opacity: 0.8;
+  font-family: "Roboto", sans-serif;
+}
+
+.mode-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--starlight);
+  transition: all 0.3s ease;
+}
+
+.mode-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.current-star {
+  padding: 15px;
+  background: rgba(251, 140, 0, 0.1);
+  border-left: 4px solid var(--star-orange);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.current-star h2 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.supernova-btn {
+  background: var(--star-orange);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(252, 61, 33, 0.4);
+}
+
+.supernova-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(252, 61, 33, 0.6);
+}
+
+.cosmic-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border 0.3s ease;
+}
+
+.cosmic-tab {
+  flex: 1;
+  padding: 15px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+}
+
+.cosmic-tab.active {
+  color: var(--star-orange);
+  border-bottom: 3px solid var(--star-orange);
+}
+
+.cosmic-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.star-system {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.star-item {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.star-item:hover {
+  background: rgba(11, 61, 145, 0.2);
+}
+
+.star-item.active {
+  background: rgba(252, 61, 33, 0.1);
+  border-left: 3px solid var(--star-orange);
+}
+
+.star-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--star-orange);
+  transition: color 0.3s ease;
+}
+
+.star-info {
+  flex-grow: 1;
+}
+
+.star-info h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.star-info p {
+  font-size: 12px;
+  opacity: 0.7;
+  font-family: "Roboto", sans-serif;
+}
+
+.star-duration {
+  font-size: 12px;
+  opacity: 0.7;
+  font-family: "Roboto Mono", monospace;
+}
+
+/* Cosmic Viewer */
+.cosmic-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stellar-display {
+  flex-grow: 1;
+  background: rgba(18, 18, 18, 0.8);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.nebula-video {
+  position: relative;
+  padding-top: 56.25%;
+  background: #000;
+}
+
+.video-space {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    ellipse at center,
+    var(--cosmic-blue) 0%,
+    var(--space-black) 100%
+  );
+  transition: background 0.3s ease;
+}
+
+.video-space i {
+  font-size: 60px;
+  color: var(--star-orange);
+  margin-bottom: 20px;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+.video-space h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+  max-width: 80%;
+}
+
+.video-space p {
+  opacity: 0.7;
+  font-family: "Roboto", sans-serif;
+}
+
+.cosmic-controls {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.control-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--starlight);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.control-btn:hover {
+  background: rgba(252, 61, 33, 0.3);
+  color: var(--star-orange);
+  transform: scale(1.1);
+}
+
+.control-btn.active {
+  background: var(--star-orange);
+  color: white;
+}
+
+.timeline {
+  flex-grow: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.progress {
+  height: 100%;
+  width: 35%;
+  background: var(--star-orange);
+  border-radius: 2px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.progress::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--star-orange);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.3s;
+}
+
+.timeline:hover .progress::after {
+  opacity: 1;
+}
+
+.time-display {
+  font-family: "Roboto Mono", monospace;
+  font-size: 13px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.stellar-content {
+  padding: 25px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.content-section {
+  margin-bottom: 25px;
+}
+
+.content-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: var(--star-orange);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+}
+
+.content-section p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+  font-family: "Roboto", sans-serif;
+}
+
+.cosmic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.cosmic-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 15px;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cosmic-card:hover {
+  background: rgba(252, 61, 33, 0.1);
+  border-color: rgba(252, 61, 33, 0.3);
+  transform: translateY(-3px);
+}
+
+.cosmic-card h4 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--star-orange);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.cosmic-card p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+.cosmic-feedback {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  transition: background 0.3s ease;
+}
+
+.cosmic-feedback h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: var(--star-orange);
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--starlight);
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  border-color: var(--star-orange);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Light Mode Support */
+body.light-mode .cosmic-feedback {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .feedback-form input,
+body.light-mode .feedback-form textarea {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--space-text);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .feedback-form input:focus,
+body.light-mode .feedback-form textarea:focus {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: var(--star-orange-light);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cosmic-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .star-nav {
+    order: 2;
+  }
+}
+>>>>>>> 483fb3c7969c56b545a1a151b9f35d9e46855ae5

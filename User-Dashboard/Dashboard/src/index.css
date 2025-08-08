@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium leading-tight;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow-sm p-6;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+
+  .progress-bar {
+    @apply h-2 rounded-full bg-gray-200 overflow-hidden;
+  }
+
+  .progress-value {
+    @apply h-full rounded-full transition-all duration-300 ease-out;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 text-white rounded-md transition-colors duration-200;
+  }
+
+  .calendar-day {
+    @apply w-10 h-10 flex items-center justify-center rounded-full text-sm cursor-pointer;
+  }
+
+  .activity-icon {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-white;
+  }
+}
+
+/* Utility Overrides (Outside @layer to avoid nesting errors) */
+
+/* Active nav-item (cannot be styled with @apply directly for pseudo-class) */
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Calendar modifiers (pseudo-classes use normal CSS) */
+.calendar-day.today {
+  background-color: #2563eb; /* Tailwind blue-600 */
+  color: white;
+}
+
+.calendar-day.selected {
+  background-color: #1d4ed8; /* Tailwind blue-700 */
+  color: white;
+}
+
+.calendar-day.has-event {
+  font-weight: 500;
+  border: 1px solid #60a5fa; /* Tailwind blue-300 */
+}
+
+/* Theme Support */
+body.light {
+  background-color: #fff;
+  color: #000;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+/* Optional global link styling */
+a {
+  color: inherit;
+}

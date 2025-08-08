@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
@@ -17,9 +18,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+=======
+  "name": "outlinesummaryapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> 483fb3c7969c56b545a1a151b9f35d9e46855ae5
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "type": "commonjs"
+=======
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+>>>>>>> 483fb3c7969c56b545a1a151b9f35d9e46855ae5
 }
