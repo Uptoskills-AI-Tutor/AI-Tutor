@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium leading-tight;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow-sm p-6 animate-fade-in;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700;
+  }
+
+  .progress-bar {
+    @apply h-2 rounded-full bg-gray-200 overflow-hidden;
+  }
+
+  .progress-value {
+    @apply h-full rounded-full transition-all duration-300 ease-out;
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 text-white hover:bg-white/10 rounded-md transition-colors duration-200;
+  }
+  
+  .nav-item.active {
+    @apply bg-white/10;
+  }
+
+  .calendar-day {
+    @apply w-10 h-10 flex items-center justify-center rounded-full text-sm cursor-pointer;
+  }
+
+  .calendar-day.today {
+    @apply bg-primary-500 text-white;
+  }
+
+  .calendar-day.selected {
+    @apply bg-primary-600 text-white;
+  }
+
+  .calendar-day.has-event {
+    @apply font-medium border border-primary-300;
+  }
+
+  .activity-icon {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-white;
+  }
+}

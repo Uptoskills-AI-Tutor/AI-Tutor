@@ -1,0 +1,63 @@
+
+!pip install -q sentence-transformers
+
+# Imports
+from sentence_transformers import SentenceTransformer, util
+from IPython.display import YouTubeVideo, display
+import ipywidgets as widgets
+import torch
+
+# Load model
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# --- VIDEO DISPLAY WIDGET ---
+button = widgets.Button(description="Show Video 🎬")
+output_video = widgets.Output()
+
+def on_button_clicked(b):
+    with output_video:
+        output_video.clear_output()
+        display(YouTubeVideo('dQw4w9WgXcQ', width=640, height=360))
+
+button.on_click(on_button_clicked)
+
+# --- SUMMARY EVALUATION LOGIC ---
+ideal_summary = "The video explains how plants make their food using sunlight through photosynthesis."
+
+def evaluate_summary(user_summary, ideal_summary):
+    embedding_ideal = model.encode(ideal_summary, convert_to_tensor=True)
+    embedding_user = model.encode(user_summary, convert_to_tensor=True)
+    score = util.pytorch_cos_sim(embedding_user, embedding_ideal).item()
+    print("Similarity Score:", round(score, 2))
+
+    if score < 0.5:
+        return "❌ You haven't understood the video properly. Please try again."
+    elif score == 0.5:
+        return "⚠️ Hmm... It's okay. Please re-watch the video."
+    elif score > 0.75:
+        return "✅ Great job! You understood the video well."
+    else:
+        return "👍 You're getting there. Almost a good summary!"
+
+#  WIDGETS FOR USER INPUT & FEEDBACK 
+summary_box = widgets.Text(
+    value='',
+    placeholder='Type your one-line summary here...',
+    description='Summary:',
+    layout=widgets.Layout(width='80%')
+)
+
+submit_button = widgets.Button(description="Submit")
+output_eval = widgets.Output()
+
+def on_submit(b):
+    with output_eval:
+        output_eval.clear_output()
+        result = evaluate_summary(summary_box.value.strip(), ideal_summary)
+        print(result)
+
+submit_button.on_click(on_submit)
+
+# --- DISPLAY EVERYTHING ---
+display(button, output_video)
+display(summary_box, submit_button, output_eval)
