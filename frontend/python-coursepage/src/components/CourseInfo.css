@@ -1,0 +1,129 @@
+.course-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f2f7;
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.course-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f97316;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.stars {
+  font-size: 1.2rem;
+}
+
+.rating-text {
+  color: #555;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 10px 0 15px 0;
+  color: #222;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.features-list li::before {
+  content: "✓ ";
+  color: #22c55e; /* green */
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.enroll-now {
+  background-color: #f97316;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.enroll-now:hover {
+  background-color: #ea580c;
+}
+
+.see-curriculum {
+  background-color: transparent;
+  border: 1px solid #f97316;
+  color: #f97316;
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.see-curriculum:hover {
+  background-color: #f97316;
+  color: white;
+}
+
+.course-image-container {
+  position: relative;
+  max-width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.course-image {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  padding: 15px 18px;
+  font-size: 2rem;
+  color: #f97316;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #f97316;
+  color: white;
+}

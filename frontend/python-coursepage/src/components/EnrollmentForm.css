@@ -1,0 +1,182 @@
+.enrollment-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.enrollment-form-container {
+  background-color: white;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f97316;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 0;
+  color: #4f46e5;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+form legend {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 5px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form select,
+form textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+form textarea {
+  min-height: 80px;
+}
+
+.radio-label,
+.checkbox-label {
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio-label input,
+.checkbox-label input {
+  margin-right: 6px;
+}
+
+.enrollment-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.enrollment-option {
+  flex: 1 1 30%;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.enrollment-option.selected,
+.enrollment-option:hover {
+  background-color: #e0e7ff;
+}
+
+.recommended-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ef4444;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.enrollment-option h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.enrollment-option .price {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.enrollment-option ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+.enrollment-option ul li {
+  margin-bottom: 5px;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.option-btn {
+  background-color: transparent;
+  border: none;
+  color: #3b82f6;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+
+.submit-btn {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #16a34a;
+}
