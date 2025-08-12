@@ -1,0 +1,88 @@
+/* Certificate Container */
+.certificate {
+  width: 900px;
+  height: 1273px;
+  margin: 20px auto;
+  background-image: url('public/assets/certificate-template.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  position: relative;
+  font-family: 'Georgia', serif;
+}
+
+/* Name Placement (below 'proudly presented to') */
+.name {
+  position: absolute;
+  top: 600px;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  color: #001d3d;
+}
+
+/* Dynamic Details */
+.details {
+  position: absolute;
+  top: 700px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  line-height: 2.0;
+  color: #333;
+  padding: 0 40px;
+}
+
+/* Download Button */
+.download-btn {
+  margin-top: 15px;
+  padding: 10px 25px;
+  background-color: #002855;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background-color: #001a3c;
+}
+
+/* Form Styling */
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 350px;
+  padding: 30px;
+  border-radius: 10px;
+  background: #f7f9fc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-box input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-box button {
+  padding: 12px;
+  background-color: #003366;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-box button:hover {
+  background-color: #001f3f;
+}
