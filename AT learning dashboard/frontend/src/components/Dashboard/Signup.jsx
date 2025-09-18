@@ -1,16 +1,20 @@
 // src/components/dashboard/Signup.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { signup } from "../../api/auth";
+
+import uptoskillsLogo from "../../assets/Uptoskills.png";
+import robotImage from "../../assets/Robot.jpg";
+import googleIcon from "../../assets/google-icon.png";
+import appleIcon from "../../assets/apple-icon.png";
 
 export default function Signup() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,36 +25,27 @@ export default function Signup() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const validate = () => {
-    if (!form.email || !form.password) return "Email & password are required";
-    if (form.password.length < 6) return "Password must be at least 6 characters";
-    if (form.password !== form.confirmPassword) return "Passwords do not match";
-    return null;
-  };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccessMsg("");
 
-    const v = validate();
-    if (v) {
-      setError(v);
+    if (!form.email || !form.username || !form.password) {
+      setError("All fields are required");
+      return;
+    }
+    if (form.password.length < 8) {
+      setError("Password must be at least 8 characters");
       return;
     }
 
     try {
       setLoading(true);
-      const res = await signup({
-        name: form.name || "User",
-        email: form.email,
-        password: form.password,
-      });
-
+      const res = await signup(form);
       setSuccessMsg(res.data?.message || "Signup successful!");
       setTimeout(() => navigate("/login"), 1200);
     } catch (err) {
-      const msg = err.response?.data?.message || err.message || "Signup failed";
+      const msg = err.response?.data?.message || "Signup failed";
       setError(msg);
     } finally {
       setLoading(false);
@@ -58,170 +53,143 @@ export default function Signup() {
   };
 
   return (
-    <div style={styles.container}>
-      <form onSubmit={onSubmit} style={styles.form}>
-        <h2 style={styles.title}>Create Account</h2>
-
-        {error && <p style={styles.error}>{error}</p>}
-        {successMsg && <p style={styles.success}>{successMsg}</p>}
-
-        <label style={styles.label}>Name</label>
-        <input
-          style={styles.input}
-          type="text"
-          name="name"
-          placeholder="Your name"
-          value={form.name}
-          onChange={onChange}
-        />
-
-        <label style={styles.label}>Email</label>
-        <input
-          style={styles.input}
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          value={form.email}
-          onChange={onChange}
-        />
-
-        <label style={styles.label}>Password</label>
-        <div style={styles.passwordWrapper}>
-          <input
-            style={styles.input}
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Min 6 characters"
-            value={form.password}
-            onChange={onChange}
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword((p) => !p)}
-            style={styles.toggleBtn}
-          >
-            {showPassword ? "Hide" : "Show"}
-          </button>
-        </div>
-
-        <label style={styles.label}>Confirm Password</label>
-        <input
-          style={styles.input}
-          type={showPassword ? "text" : "password"}
-          name="confirmPassword"
-          placeholder="Re-enter password"
-          value={form.confirmPassword}
-          onChange={onChange}
-        />
-
-        <button type="submit" style={styles.submit} disabled={loading}>
-          {loading ? "Signing up..." : "Sign Up"}
-        </button>
-
-        <p style={styles.footerText}>
-          Already have an account?{" "}
-          <span style={styles.link} onClick={() => navigate("/login")}>
-            Log in
-          </span>
+    <div className="min-h-screen flex flex-col md:flex-row bg-white">
+      <div className="flex flex-col justify-center items-start md:w-1/2 pl-16 pr-12 lg:pl-24 lg:pr-20 py-12">
+        <img src={uptoskillsLogo} alt="Uptoskills Logo" className="h-14 mb-8" />
+        <h1 className="text-5xl font-extrabold leading-tight text-gray-900">
+          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+            AI Learning
+          </span>{" "}
+          Platform
+        </h1>
+        <p className="mt-6 text-gray-600 text-lg max-w-md leading-relaxed">
+          Unlock the future of education with AI-powered courses designed to
+          accelerate your learning journey.
         </p>
-      </form>
+        <img
+          src={robotImage}
+          alt="AI Robot"
+          className="mt-10 max-w-md rounded-xl shadow-lg"
+        />
+      </div>
+
+      <div className="flex flex-col justify-center md:w-1/2 bg-gray-50 p-10 lg:p-16">
+        <div className="bg-white shadow-lg rounded-2xl p-10 w-full max-w-md mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-900">
+            Join Us Today!
+          </h2>
+          <p className="text-base text-gray-600 text-center mb-6">
+            Create your account for an enhanced experience at your fingertips.
+          </p>
+
+          {error && (
+            <p className="mb-3 text-sm text-red-800 bg-red-100 border border-red-300 px-3 py-2 rounded-md">
+              {error}
+            </p>
+          )}
+          {successMsg && (
+            <p className="mb-3 text-sm text-green-800 bg-green-100 border border-green-300 px-3 py-2 rounded-md">
+              {successMsg}
+            </p>
+          )}
+
+          <form onSubmit={onSubmit} className="space-y-5">
+            <div>
+              <label className="block text-sm font-semibold text-gray-800">
+                Email Address
+              </label>
+              <input
+                className="mt-2 w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder:text-gray-500"
+                type="email"
+                name="email"
+                placeholder="Enter your email here"
+                value={form.email}
+                onChange={onChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-800">
+                Choose a Username
+              </label>
+              <input
+                className="mt-2 w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder:text-gray-500"
+                type="text"
+                name="username"
+                placeholder="Enter your username here"
+                value={form.username}
+                onChange={onChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-800">
+                Create a Password
+              </label>
+              <div className="relative">
+                <input
+                  className="mt-2 w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder:text-gray-500 pr-10"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Minimum 8 characters required"
+                  value={form.password}
+                  onChange={onChange}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((p) => !p)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-600 text-sm"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              <p className="text-xs text-gray-700 mt-1">
+                🔒 Minimum 8 characters required
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-blue-500 to-green-400 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-60"
+            >
+              {loading ? "Signing up..." : "Sign Up"}
+            </button>
+          </form>
+
+          <div className="mt-8 space-y-4">
+            <button
+              type="button"
+              className="w-full flex items-center justify-center gap-3 border border-gray-300 text-gray-800 py-3 rounded-lg shadow-sm hover:bg-gray-50 transition"
+            >
+              <img src={googleIcon} alt="Google" className="h-5 w-5" />
+              Sign in with Google
+            </button>
+            <button
+              type="button"
+              className="w-full flex items-center justify-center gap-3 bg-black text-white py-3 rounded-lg shadow-sm hover:bg-gray-800 transition"
+            >
+              <img src={appleIcon} alt="Apple" className="h-5 w-5" />
+              Sign in with Apple
+            </button>
+          </div>
+
+          <p className="text-sm text-center mt-8 text-gray-700">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Log In!
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
 
-const styles = {
-  container: {
-    minHeight: "100vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#eef2f7",
-    padding: 20,
-  },
-  form: {
-    width: "100%",
-    maxWidth: 480,
-    background: "#ffffff",
-    borderRadius: 10,
-    padding: "32px 24px",
-    boxShadow: "0 6px 24px rgba(0,0,0,0.08)",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 700,
-    textAlign: "center",
-    marginBottom: 24,
-    color: "#111827",
-  },
-  label: {
-    display: "block",
-    marginTop: 14,
-    marginBottom: 6,
-    fontWeight: 600,
-    fontSize: 14,
-    color: "#374151",
-  },
-  input: {
-    width: "100%",
-    padding: "12px 14px",
-    borderRadius: 8,
-    border: "1px solid #ccc",
-    fontSize: 14,
-    outline: "none",
-    color: "#111827", // 👈 Text color for visibility
-    backgroundColor: "#fff", // ensure background is white
-    transition: "border 0.2s",
-  },
-  passwordWrapper: {
-    position: "relative",
-  },
-  toggleBtn: {
-    position: "absolute",
-    right: 12,
-    top: "50%",
-    transform: "translateY(-50%)",
-    background: "none",
-    border: "none",
-    color: "#2563eb",
-    cursor: "pointer",
-    fontWeight: 500,
-  },
-  submit: {
-    width: "100%",
-    marginTop: 24,
-    padding: "12px",
-    borderRadius: 8,
-    border: "none",
-    backgroundColor: "#2563eb",
-    color: "#ffffff",
-    fontWeight: 600,
-    fontSize: 16,
-    cursor: "pointer",
-    transition: "background-color 0.3s",
-  },
-  error: {
-    background: "#fee2e2",
-    color: "#b91c1c",
-    padding: "10px 14px",
-    borderRadius: 6,
-    marginBottom: 16,
-  },
-  success: {
-    background: "#d1fae5",
-    color: "#047857",
-    padding: "10px 14px",
-    borderRadius: 6,
-    marginBottom: 16,
-  },
-  footerText: {
-    marginTop: 20,
-    fontSize: 14,
-    textAlign: "center",
-  },
-  link: {
-    color: "#2563eb",
-    cursor: "pointer",
-    fontWeight: 500,
-  },
-};
  
