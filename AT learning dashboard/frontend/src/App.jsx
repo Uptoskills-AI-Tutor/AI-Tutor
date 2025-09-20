@@ -19,6 +19,8 @@ import Analytics from "./pages/Analytics.jsx";
 import Discussion from "./pages/Discussion.jsx";
 import Settings from "./pages/Settings.jsx";
 
+
+import DiscussionOverview from "./components/Dashboard/DiscussionOverview";
 import Login from "./components/Dashboard/Login.jsx";
 import Signup from "./components/Dashboard/Signup.jsx";
 import RequireAuth from "./auth/RequireAuth.jsx";
@@ -82,7 +84,8 @@ function App() {
                 <Route path="doubts" element={<CourseDoubt />} /> {/* ✅ Added */}
 
                 {/* Others */}
-                <Route path="discussion" element={<Discussion />} />
+                {/* <Route path="discussion" element={<Discussion />} /> */}
+                <Route path="discussion" element={<DiscussionOverview />} />
                 <Route path="analytics" element={<Analytics />} />
                 <Route path="settings" element={<Settings />} />
 
