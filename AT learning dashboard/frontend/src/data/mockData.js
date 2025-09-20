@@ -1,3 +1,28 @@
+import pythonImg from "../assets/python_for_ai_logo.png";
+import dataImg from "../assets/data_analytics.png";
+import reactImg from "../assets/react_fundamentals_logo.png";
+//-----------Sidebar Courses -----------
+const courses = [
+  {
+    title: "React Fundamentals",
+    lesson: "Lesson 18: State Management",
+    progress: 75,
+    image: reactImg,
+  },
+  {
+    title: "Python for AI",
+    lesson: "Lesson 9: Neural Networks",
+    progress: 45,
+    image: pythonImg,
+  },
+  {
+    title: "Digital Marketing",
+    lesson: "Lesson 27: SEO Optimization",
+    progress: 90,
+    image: dataImg,
+  },
+];
+export default courses;
 // ---------- User ----------
 export const currentUser = {
   id: '1',
