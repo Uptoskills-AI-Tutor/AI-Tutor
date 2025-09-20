@@ -44,7 +44,7 @@ export const navItems = [
 ];
 
 // ---------- Courses / Progress ----------
-export const courses = [
+export const mycourses = [
   {
     id: '1',
     title: 'Data Structures & Algorithms',
